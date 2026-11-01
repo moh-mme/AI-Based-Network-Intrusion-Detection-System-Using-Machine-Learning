@@ -14,14 +14,14 @@ toolbarMode = "minimal"     # hide the Deploy button and developer menu
 [theme]
 base = "dark"
 primaryColor = "#38C6E8"
-backgroundColor = "#0F1B2D"
-secondaryBackgroundColor = "#172840"
+backgroundColor = "#0A0D12"
+secondaryBackgroundColor = "#141922"
 textColor = "#E6EDF5"
 linkColor = "#38C6E8"
-borderColor = "#2A3D57"
+borderColor = "#232A36"
 showWidgetBorder = true
-dataframeBorderColor = "#22344D"
-dataframeHeaderBackgroundColor = "#172840"
+dataframeBorderColor = "#1E242F"
+dataframeHeaderBackgroundColor = "#141922"
 redColor = "#E5484D"
 orangeColor = "#F08A4B"
 yellowColor = "#F2C14E"
@@ -40,12 +40,12 @@ headingFontSizes = ["2.25rem", "1.5rem", "1.2rem", "1rem", "0.9rem", "0.8rem"]
 headingFontWeights = [700, 600, 600, 600, 600, 600]
 metricValueFontSize = "2rem"
 metricValueFontWeight = 600
-baseRadius = "6px"
+baseRadius = "10px"
 
 [theme.sidebar]
-backgroundColor = "#0B1626"
-secondaryBackgroundColor = "#14243A"
-borderColor = "#1E3048"
+backgroundColor = "#07090D"
+secondaryBackgroundColor = "#11151C"
+borderColor = "#161B23"
 
 [[theme.fontFaces]]
 family = "Barlow"

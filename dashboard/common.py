@@ -24,8 +24,8 @@ TASK_LABELS = {"binary": "Benign vs attack", "multiclass": "Attack type (8 class
 # Theme tokens (mirrored in .streamlit/config.toml).
 INK = "#E6EDF5"
 MUTED = "#93A4BC"
-SURFACE = "#172840"
-BORDER = "#2A3D57"
+SURFACE = "#141922"
+BORDER = "#232A36"
 ACCENT = "#38C6E8"
 
 # Traffic categories. Benign stays a quiet steel blue so attacks stand out;
