@@ -100,18 +100,32 @@ function addArc(state, event, now) {
   state.items.push({ group, born: now });
 }
 
+function addEvents(state, events) {
+  const now = performance.now();
+  for (const event of events) {
+    const count = Math.min(MAX_ARCS_PER_TYPE, Math.ceil(event.count / 10));
+    for (let i = 0; i < count; i++) addArc(state, event, now);
+  }
+}
+
 function applyData(state, data) {
   if (data.tick < state.lastTick) {  // the monitor was reset
     state.items.forEach((item) => item.group.remove());
     state.items = [];
   } else if (data.tick > state.lastTick) {
-    const now = performance.now();
-    for (const event of data.events) {
-      const count = Math.min(MAX_ARCS_PER_TYPE, Math.ceil(event.count / 10));
-      for (let i = 0; i < count; i++) addArc(state, event, now);
-    }
+    addEvents(state, data.events);
   }
   state.lastTick = data.tick;
+}
+
+// Autoplay: step through a recorded sequence of per-second detections on a loop,
+// without waiting for Streamlit reruns (used on the overview page).
+function autoplay(host, state, sequence) {
+  let step = 0;
+  const timer = setInterval(() => {
+    if (!host.isConnected) return clearInterval(timer);
+    addEvents(state, sequence[step++ % sequence.length]);
+  }, 1000);
 }
 
 export default function (component) {
@@ -125,10 +139,11 @@ export default function (component) {
   host.latestData = data;
   if (!host.mapState) {
     host.mapState = createMap(host, data).then((state) => {
-      applyData(state, host.latestData);
+      if (data.sequence?.length) autoplay(host, state, data.sequence);
+      else applyData(state, host.latestData);
       return state;
     });
-  } else {
+  } else if (!data.sequence?.length) {
     host.mapState.then((state) => applyData(state, host.latestData));
   }
 }

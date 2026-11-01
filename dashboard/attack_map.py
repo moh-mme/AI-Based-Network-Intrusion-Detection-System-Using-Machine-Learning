@@ -91,9 +91,17 @@ _component = st.components.v2.component(
 )
 
 
-def attack_map(tick: int, attacks: dict[str, int], key: str = "attack_map") -> None:
-    """Draw this tick's detections (attack type -> flow count) as arcs on the world map."""
+def attack_map(tick: int, attacks: dict[str, int], key: str = "attack_map",
+               sequence: list[dict[str, int]] | None = None) -> None:
+    """Draw this tick's detections (attack type -> flow count) as arcs on the world map.
+
+    With `sequence` (one {attack type: flows} per second) the map plays it on a loop
+    by itself instead of following `tick`.
+    """
     # Rebuilt whenever this generator is newer than its output.
     if not WORLD_MAP.exists() or WORLD_MAP.stat().st_mtime < Path(__file__).stat().st_mtime:
         build_world_map()
-    _component(key=key, height="content", data=attack_payload(tick, attacks))
+    data = attack_payload(tick, attacks)
+    if sequence:
+        data["sequence"] = [attack_payload(0, step)["events"] for step in sequence]
+    _component(key=key, height="content", data=data)
