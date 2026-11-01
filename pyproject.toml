@@ -1,0 +1,9 @@
+[project]
+name = "ai-nids"
+version = "1.0.0"
+description = "AI-based network intrusion detection system trained on CIC-IDS2017"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::sklearn.exceptions.ConvergenceWarning"]

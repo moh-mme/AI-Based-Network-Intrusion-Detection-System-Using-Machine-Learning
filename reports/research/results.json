@@ -1,0 +1,4175 @@
+{
+  "settings": {
+    "data_source": "CIC-IDS2017",
+    "target_fpr": 0.01,
+    "shortcut_features": [
+      "Destination Port",
+      "Init_Win_bytes_forward",
+      "Init_Win_bytes_backward"
+    ],
+    "models": [
+      "xgboost",
+      "random_forest"
+    ],
+    "feature_sets": {
+      "all": "All features",
+      "no_port": "Without destination port",
+      "no_port_window": "Without port and TCP window"
+    },
+    "primary_feature_set": "no_port",
+    "anomaly_detectors": {
+      "isolation_forest": "Isolation Forest",
+      "autoencoder": "Autoencoder"
+    },
+    "confident_threshold": 0.01,
+    "score_bins": [
+      0.0,
+      1e-06,
+      1.584893192461114e-06,
+      2.5118864315095823e-06,
+      3.981071705534969e-06,
+      6.30957344480193e-06,
+      1e-05,
+      1.584893192461114e-05,
+      2.5118864315095822e-05,
+      3.9810717055349695e-05,
+      6.309573444801929e-05,
+      0.0001,
+      0.00015848931924611142,
+      0.0002511886431509582,
+      0.00039810717055349735,
+      0.0006309573444801936,
+      0.001,
+      0.001584893192461114,
+      0.002511886431509582,
+      0.003981071705534973,
+      0.006309573444801936,
+      0.01,
+      0.01584893192461114,
+      0.025118864315095822,
+      0.039810717055349776,
+      0.06309573444801943,
+      0.1,
+      0.15848931924611143,
+      0.25118864315095824,
+      0.39810717055349776,
+      0.6309573444801942,
+      1.0
+    ]
+  },
+  "random": {
+    "created_at": "2026-11-01T18:32:57",
+    "quick": false,
+    "seconds": 572,
+    "result": [
+      {
+        "task": "binary",
+        "features": "all",
+        "model": "xgboost",
+        "accuracy": 0.9990132026677555,
+        "f1_macro": 0.9982587981947566,
+        "detection_rate": 0.9997885959245992,
+        "false_alarm_rate": 0.0011460944719641163,
+        "by_family": {
+          "Botnet": 0.982051282051282,
+          "BruteForce": 0.9994535519125683,
+          "DDoS": 1.0,
+          "DoS": 0.9998193455146072,
+          "Infiltration": 0.7142857142857143,
+          "PortScan": 0.9999448701692486,
+          "WebAttack": 1.0
+        }
+      },
+      {
+        "task": "binary",
+        "features": "all",
+        "model": "random_forest",
+        "accuracy": 0.9988190457889975,
+        "f1_macro": 0.9979157145154454,
+        "detection_rate": 0.9989194902812849,
+        "false_alarm_rate": 0.0012015895727118526,
+        "by_family": {
+          "Botnet": 0.9179487179487179,
+          "BruteForce": 0.9983606557377049,
+          "DDoS": 0.9997265945397024,
+          "DoS": 0.9989418808712708,
+          "Infiltration": 0.7142857142857143,
+          "PortScan": 0.9998897403384972,
+          "WebAttack": 0.9883177570093458
+        }
+      },
+      {
+        "task": "binary",
+        "features": "no_port",
+        "model": "xgboost",
+        "accuracy": 0.9987509908005668,
+        "f1_macro": 0.9977970988040659,
+        "detection_rate": 0.9995771918491985,
+        "false_alarm_rate": 0.0014187443147682115,
+        "by_family": {
+          "Botnet": 0.9743589743589743,
+          "BruteForce": 0.9994535519125683,
+          "DDoS": 1.0,
+          "DoS": 0.9996644988128419,
+          "Infiltration": 0.7142857142857143,
+          "PortScan": 0.9999448701692486,
+          "WebAttack": 0.9789719626168224
+        }
+      },
+      {
+        "task": "binary",
+        "features": "no_port",
+        "model": "random_forest",
+        "accuracy": 0.9984467449699357,
+        "f1_macro": 0.9972593484985817,
+        "detection_rate": 0.9981560866756709,
+        "false_alarm_rate": 0.0014935420592542905,
+        "by_family": {
+          "Botnet": 0.9102564102564102,
+          "BruteForce": 0.9923497267759562,
+          "DDoS": 0.9996875366168028,
+          "DoS": 0.997909569526169,
+          "Infiltration": 0.7142857142857143,
+          "PortScan": 0.9998346105077457,
+          "WebAttack": 0.9672897196261683
+        }
+      },
+      {
+        "task": "binary",
+        "features": "no_port_window",
+        "model": "xgboost",
+        "accuracy": 0.997517994539588,
+        "f1_macro": 0.9956171841675266,
+        "detection_rate": 0.9944447706853016,
+        "false_alarm_rate": 0.0018506409684136364,
+        "by_family": {
+          "Botnet": 0.6256410256410256,
+          "BruteForce": 0.9704918032786886,
+          "DDoS": 0.9992969573878061,
+          "DoS": 0.9942964798183132,
+          "Infiltration": 0.7142857142857143,
+          "PortScan": 0.9998346105077457,
+          "WebAttack": 0.9322429906542056
+        }
+      },
+      {
+        "task": "binary",
+        "features": "no_port_window",
+        "model": "random_forest",
+        "accuracy": 0.9974539427857709,
+        "f1_macro": 0.9955034512210728,
+        "detection_rate": 0.994080685888778,
+        "false_alarm_rate": 0.0018530537988809292,
+        "by_family": {
+          "Botnet": 0.6102564102564103,
+          "BruteForce": 0.9704918032786886,
+          "DDoS": 0.9991797836191071,
+          "DoS": 0.9938061319293899,
+          "Infiltration": 0.7142857142857143,
+          "PortScan": 0.9997794806769943,
+          "WebAttack": 0.927570093457944
+        }
+      },
+      {
+        "task": "multiclass",
+        "features": "all",
+        "model": "xgboost",
+        "accuracy": 0.9990031945812217,
+        "f1_macro": 0.9633799686937025,
+        "detection_rate": 0.9996594045451876,
+        "false_alarm_rate": 0.0011002506930855517,
+        "by_family": {
+          "Botnet": 0.9538461538461539,
+          "BruteForce": 1.0,
+          "DDoS": 1.0,
+          "DoS": 0.9997677299473521,
+          "Infiltration": 0.8571428571428571,
+          "PortScan": 1.0,
+          "WebAttack": 0.9976635514018691
+        }
+      },
+      {
+        "task": "multiclass",
+        "features": "all",
+        "model": "random_forest",
+        "accuracy": 0.9987990296159297,
+        "f1_macro": 0.9511141736522767,
+        "detection_rate": 0.9989077456104293,
+        "false_alarm_rate": 0.0011895254203753882,
+        "by_family": {
+          "Botnet": 0.9102564102564102,
+          "BruteForce": 0.9989071038251366,
+          "DDoS": 0.9997265945397024,
+          "DoS": 0.9989934964385259,
+          "Infiltration": 0.7142857142857143,
+          "PortScan": 0.9998897403384972,
+          "WebAttack": 0.985981308411215
+        }
+      },
+      {
+        "task": "multiclass",
+        "features": "no_port",
+        "model": "xgboost",
+        "accuracy": 0.9987409827140329,
+        "f1_macro": 0.9462460624792272,
+        "detection_rate": 0.9994245111280756,
+        "false_alarm_rate": 0.0013753133663569398,
+        "by_family": {
+          "Botnet": 0.941025641025641,
+          "BruteForce": 0.9983606557377049,
+          "DDoS": 0.9999609420771003,
+          "DoS": 0.999716114380097,
+          "Infiltration": 0.7142857142857143,
+          "PortScan": 0.9998897403384972,
+          "WebAttack": 0.9836448598130841
+        }
+      },
+      {
+        "task": "multiclass",
+        "features": "no_port",
+        "model": "random_forest",
+        "accuracy": 0.9983666802776644,
+        "f1_macro": 0.9465054190112703,
+        "detection_rate": 0.9979681719419813,
+        "false_alarm_rate": 0.0015345601771982694,
+        "by_family": {
+          "Botnet": 0.9,
+          "BruteForce": 0.9890710382513661,
+          "DDoS": 0.999648478693903,
+          "DoS": 0.9979611850934241,
+          "Infiltration": 0.7142857142857143,
+          "PortScan": 0.9998346105077457,
+          "WebAttack": 0.9509345794392523
+        }
+      },
+      {
+        "task": "multiclass",
+        "features": "no_port_window",
+        "model": "xgboost",
+        "accuracy": 0.9975620301203373,
+        "f1_macro": 0.92182833248668,
+        "detection_rate": 0.9945974514064243,
+        "false_alarm_rate": 0.001799971528600486,
+        "by_family": {
+          "Botnet": 0.6076923076923076,
+          "BruteForce": 0.9699453551912568,
+          "DDoS": 0.999648478693903,
+          "DoS": 0.9945545576545887,
+          "Infiltration": 0.7142857142857143,
+          "PortScan": 0.9998897403384972,
+          "WebAttack": 0.9345794392523364
+        }
+      },
+      {
+        "task": "multiclass",
+        "features": "no_port_window",
+        "model": "random_forest",
+        "accuracy": 0.9974659524896116,
+        "f1_macro": 0.9224378986687877,
+        "detection_rate": 0.9941159199013447,
+        "false_alarm_rate": 0.0018265126637407075,
+        "by_family": {
+          "Botnet": 0.6102564102564103,
+          "BruteForce": 0.9704918032786886,
+          "DDoS": 0.9991797836191071,
+          "DoS": 0.9939093630639001,
+          "Infiltration": 0.7142857142857143,
+          "PortScan": 0.9997794806769943,
+          "WebAttack": 0.9252336448598131
+        }
+      }
+    ]
+  },
+  "temporal": {
+    "created_at": "2026-11-01T18:32:57",
+    "quick": false,
+    "seconds": 205,
+    "result": {
+      "rows": [
+        {
+          "scenario": "temporal",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "calibration": "training data",
+          "fpr": 0.038165,
+          "dr_unseen": 0.0014091143671326317,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.012833675564681724,
+            "DDoS": 0.00010155139281641071,
+            "Infiltration": 0.75,
+            "PortScan": 0.002745495843164928,
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.8157003715192856,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "calibration": "recent benign",
+          "fpr": 0.010185,
+          "dr_unseen": 8.526488208764333e-05,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.001540041067761807,
+            "DDoS": 0.0,
+            "Infiltration": 0.3055555555555556,
+            "PortScan": 5.5130438617769643e-05,
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.8157028360109497,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "none",
+          "detector": "Autoencoder",
+          "calibration": "training data",
+          "fpr": 0.0932,
+          "dr_unseen": 0.5419032019207036,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.4003077788366897,
+            "Infiltration": 0.7777777777777778,
+            "PortScan": 0.7661146272079741,
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.9089591589853478,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "none",
+          "detector": "Autoencoder",
+          "calibration": "recent benign",
+          "fpr": 0.01063,
+          "dr_unseen": 0.0001839926402943882,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.000281219241645445,
+            "Infiltration": 0.027777777777777776,
+            "PortScan": 4.410435089421571e-05,
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.9089524580182646,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "calibration": null,
+          "fpr": 0.000245,
+          "dr_unseen": 0.012650615926582448,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.015787335760151233,
+            "Infiltration": 0.0,
+            "PortScan": 0.0034842437206430415,
+            "WebAttack": 0.22491833877741485
+          },
+          "confident_miss": 0.5959521619135234,
+          "auc_unseen": 0.8360058447842573,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "calibration": "training data",
+          "fpr": 0.01147,
+          "dr_unseen": 0.5987255143940584,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.9981017701188932,
+            "Infiltration": 0.0,
+            "PortScan": 0.03869054182195074,
+            "WebAttack": 0.997200186654223
+          },
+          "auc_unseen": 0.8360417310902685,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "calibration": "training data",
+          "fpr": 0.037865,
+          "dr_unseen": 0.5650772993470505,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.005646817248459959,
+            "DDoS": 0.9393894417798053,
+            "Infiltration": 0.5555555555555556,
+            "PortScan": 0.03866848964650363,
+            "WebAttack": 0.9920671955202987
+          },
+          "auc_unseen": 0.8362957367222383,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "calibration": "training data",
+          "fpr": 0.052455,
+          "dr_unseen": 0.6182197590145174,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.9395769212742356,
+            "Infiltration": 0.5,
+            "PortScan": 0.16911813350387014,
+            "WebAttack": 0.9920671955202987
+          },
+          "auc_unseen": 0.9548307986963448,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "calibration": "recent benign",
+          "fpr": 0.010185,
+          "dr_unseen": 0.5982004622254135,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.9971878075835455,
+            "Infiltration": 0.0,
+            "PortScan": 0.03869054182195074,
+            "WebAttack": 0.997200186654223
+          },
+          "auc_unseen": 0.8360094694504903,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "calibration": "recent benign",
+          "fpr": 0.00961,
+          "dr_unseen": 0.4354791661992057,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.7155623603668348,
+            "Infiltration": 0.19444444444444445,
+            "PortScan": 0.03743356782146559,
+            "WebAttack": 0.9500699953336444
+          },
+          "auc_unseen": 0.8361317339623489,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "calibration": "recent benign",
+          "fpr": 0.01024,
+          "dr_unseen": 0.43545672807234054,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.7155701720124361,
+            "Infiltration": 0.027777777777777776,
+            "PortScan": 0.03743356782146559,
+            "WebAttack": 0.9500699953336444
+          },
+          "auc_unseen": 0.9432080826508402,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "calibration": null,
+          "fpr": 0.0004,
+          "dr_unseen": 0.3665761662216438,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6353758182698768,
+            "Infiltration": 0.0,
+            "PortScan": 0.0033409045802368404,
+            "WebAttack": 0.021465235650956604
+          },
+          "confident_miss": 0.3533062579935827,
+          "auc_unseen": 0.939284991664236,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "calibration": "training data",
+          "fpr": 0.0507,
+          "dr_unseen": 0.6230125429129176,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.012833675564681724,
+            "DDoS": 0.9996640992391457,
+            "Infiltration": 0.7777777777777778,
+            "PortScan": 0.09641211105475556,
+            "WebAttack": 0.9617358842743817
+          },
+          "auc_unseen": 0.9392833452778963,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "calibration": "training data",
+          "fpr": 0.04007,
+          "dr_unseen": 0.5775528978840846,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.005646817248459959,
+            "DDoS": 0.9580280281844173,
+            "Infiltration": 0.7222222222222222,
+            "PortScan": 0.0446336031049463,
+            "WebAttack": 0.9206719552029865
+          },
+          "auc_unseen": 0.9352432727915274,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "calibration": "training data",
+          "fpr": 0.053225,
+          "dr_unseen": 0.6296497408396347,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.9580358398300186,
+            "Infiltration": 0.5555555555555556,
+            "PortScan": 0.1728118728912607,
+            "WebAttack": 0.9206719552029865
+          },
+          "auc_unseen": 0.9545741952902371,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "calibration": "recent benign",
+          "fpr": 0.00931,
+          "dr_unseen": 0.49742185922319204,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.8210508225662818,
+            "Infiltration": 0.05555555555555555,
+            "PortScan": 0.04150219419145699,
+            "WebAttack": 0.9197386840877275
+          },
+          "auc_unseen": 0.9392629320461329,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "calibration": "recent benign",
+          "fpr": 0.00928,
+          "dr_unseen": 0.46619696187762244,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.7716812223663037,
+            "Infiltration": 0.19444444444444445,
+            "PortScan": 0.03446755022382958,
+            "WebAttack": 0.9174055062995801
+          },
+          "auc_unseen": 0.9259066122691678,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "calibration": "recent benign",
+          "fpr": 0.009895,
+          "dr_unseen": 0.46617003612538427,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.7716812223663037,
+            "Infiltration": 0.027777777777777776,
+            "PortScan": 0.03446755022382958,
+            "WebAttack": 0.9174055062995801
+          },
+          "auc_unseen": 0.9558220160208226,
+          "features": "all"
+        },
+        {
+          "scenario": "temporal",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "calibration": "training data",
+          "fpr": 0.03606,
+          "dr_unseen": 0.0019072407835393902,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.004620123203285421,
+            "DDoS": 0.0010936303841767307,
+            "Infiltration": 0.7222222222222222,
+            "PortScan": 0.0027565219308884822,
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.8155047765274754,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "calibration": "recent benign",
+          "fpr": 0.010265,
+          "dr_unseen": 0.0006776314313281127,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.0,
+            "Infiltration": 0.2777777777777778,
+            "PortScan": 0.001554678369021104,
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.8155092123544327,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "none",
+          "detector": "Autoencoder",
+          "calibration": "training data",
+          "fpr": 0.063145,
+          "dr_unseen": 0.33983440662373504,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.013860369609856264,
+            "DDoS": 0.23993469464277345,
+            "Infiltration": 0.5,
+            "PortScan": 0.4958100866650495,
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.9138865993672449,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "none",
+          "detector": "Autoencoder",
+          "calibration": "recent benign",
+          "fpr": 0.01089,
+          "dr_unseen": 2.6925752238203155e-05,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.0,
+            "Infiltration": 0.08333333333333333,
+            "PortScan": 3.307826317066179e-05,
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.9138903108017142,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "calibration": null,
+          "fpr": 0.000365,
+          "dr_unseen": 0.004379922364081046,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.000281219241645445,
+            "Infiltration": 0.0,
+            "PortScan": 0.00530354819502944,
+            "WebAttack": 0.21418572095193653
+          },
+          "confident_miss": 0.9738371440752126,
+          "auc_unseen": 0.9275442505216864,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "calibration": "training data",
+          "fpr": 0.02478,
+          "dr_unseen": 0.3339556173850607,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.5572671739028544,
+            "Infiltration": 0.027777777777777776,
+            "PortScan": 0.012051513881844444,
+            "WebAttack": 0.9262715818945404
+          },
+          "auc_unseen": 0.9275537652410977,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "calibration": "training data",
+          "fpr": 0.02177,
+          "dr_unseen": 0.07516772499831714,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.10746480853656631,
+            "Infiltration": 0.5,
+            "PortScan": 0.010959931197212605,
+            "WebAttack": 0.9244050396640224
+          },
+          "auc_unseen": 0.874988961608365,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "calibration": "training data",
+          "fpr": 0.036965,
+          "dr_unseen": 0.15344088675477371,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.000513347022587269,
+            "DDoS": 0.24373896605058823,
+            "Infiltration": 0.3611111111111111,
+            "PortScan": 0.01097095728493616,
+            "WebAttack": 0.9244050396640224
+          },
+          "auc_unseen": 0.9204710654071397,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "calibration": "recent benign",
+          "fpr": 0.01012,
+          "dr_unseen": 0.060915026813561604,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.08284250160138734,
+            "Infiltration": 0.027777777777777776,
+            "PortScan": 0.010904800758594835,
+            "WebAttack": 0.9234717685487634
+          },
+          "auc_unseen": 0.9275532093252854,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "calibration": "recent benign",
+          "fpr": 0.007855,
+          "dr_unseen": 0.015944532950389303,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.005366600528067243,
+            "Infiltration": 0.2777777777777778,
+            "PortScan": 0.009758087635345226,
+            "WebAttack": 0.9197386840877275
+          },
+          "auc_unseen": 0.8815283733928692,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "calibration": "recent benign",
+          "fpr": 0.007565,
+          "dr_unseen": 0.015904144322031997,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.005366600528067243,
+            "Infiltration": 0.08333333333333333,
+            "PortScan": 0.009736035459898118,
+            "WebAttack": 0.9197386840877275
+          },
+          "auc_unseen": 0.911420107007427,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "calibration": null,
+          "fpr": 0.000555,
+          "dr_unseen": 0.36589404716494267,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.635352383333073,
+            "Infiltration": 0.0,
+            "PortScan": 0.0018082783866628443,
+            "WebAttack": 0.01679888007466169
+          },
+          "confident_miss": 0.05898983552853008,
+          "auc_unseen": 0.9497020203850383,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "calibration": "training data",
+          "fpr": 0.031485,
+          "dr_unseen": 0.47843920389525885,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.8065836549127439,
+            "Infiltration": 0.8055555555555556,
+            "PortScan": 0.01588859240964121,
+            "WebAttack": 0.8814745683621092
+          },
+          "auc_unseen": 0.9496987603159288,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "calibration": "training data",
+          "fpr": 0.025975,
+          "dr_unseen": 0.38297843696008255,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6423984876654116,
+            "Infiltration": 0.75,
+            "PortScan": 0.013540035724524224,
+            "WebAttack": 0.863275781614559
+          },
+          "auc_unseen": 0.9371495183207306,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "calibration": "training data",
+          "fpr": 0.038565,
+          "dr_unseen": 0.38317140485112305,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.000513347022587269,
+            "DDoS": 0.6427343884262658,
+            "Infiltration": 0.7222222222222222,
+            "PortScan": 0.013540035724524224,
+            "WebAttack": 0.863275781614559
+          },
+          "auc_unseen": 0.9393166996768909,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "calibration": "recent benign",
+          "fpr": 0.008395,
+          "dr_unseen": 0.37946911391837007,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6389457403096537,
+            "Infiltration": 0.1388888888888889,
+            "PortScan": 0.010155026793393168,
+            "WebAttack": 0.8581427904806346
+          },
+          "auc_unseen": 0.949696069502098,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "calibration": "recent benign",
+          "fpr": 0.007945,
+          "dr_unseen": 0.37748109587811607,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6375162091646226,
+            "Infiltration": 0.3888888888888889,
+            "PortScan": 0.007255165722098485,
+            "WebAttack": 0.8553429771348576
+          },
+          "auc_unseen": 0.922783127874885,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "calibration": "recent benign",
+          "fpr": 0.009085,
+          "dr_unseen": 0.37744519487513184,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6375162091646226,
+            "Infiltration": 0.2222222222222222,
+            "PortScan": 0.007233113546651377,
+            "WebAttack": 0.8553429771348576
+          },
+          "auc_unseen": 0.9432626889178092,
+          "features": "no_port"
+        },
+        {
+          "scenario": "temporal",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "calibration": "training data",
+          "fpr": 0.02999,
+          "dr_unseen": 0.0012924361074337515,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.003593429158110883,
+            "DDoS": 3.9058228006311806e-05,
+            "Infiltration": 0.75,
+            "PortScan": 0.002745495843164928,
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.7979716066932933,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "calibration": "recent benign",
+          "fpr": 0.01109,
+          "dr_unseen": 0.0002198936432786591,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.0,
+            "Infiltration": 0.4444444444444444,
+            "PortScan": 0.0003638608948772796,
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.797972792178069,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "none",
+          "detector": "Autoencoder",
+          "calibration": "training data",
+          "fpr": 0.081655,
+          "dr_unseen": 0.3182668790809343,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.20046244941959473,
+            "Infiltration": 0.6944444444444444,
+            "PortScan": 0.4987540520872384,
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.9037884306437499,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "none",
+          "detector": "Autoencoder",
+          "calibration": "recent benign",
+          "fpr": 0.011325,
+          "dr_unseen": 0.00011219063432584648,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.00010155139281641071,
+            "Infiltration": 0.2777777777777778,
+            "PortScan": 2.2052175447107856e-05,
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.903792133192721,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "calibration": null,
+          "fpr": 0.001355,
+          "dr_unseen": 0.23785760764691363,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.40931460621494525,
+            "Infiltration": 0.0,
+            "PortScan": 0.005479965598606302,
+            "WebAttack": 0.050396640223985066
+          },
+          "confident_miss": 0.6197679897682141,
+          "auc_unseen": 0.8842968288195302,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "calibration": "training data",
+          "fpr": 0.01024,
+          "dr_unseen": 0.3759104269975542,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6335244582623776,
+            "Infiltration": 0.0,
+            "PortScan": 0.009780139810792335,
+            "WebAttack": 0.8301446570228651
+          },
+          "auc_unseen": 0.8843110717459106,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "calibration": "training data",
+          "fpr": 0.020245,
+          "dr_unseen": 0.35624565261291985,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6025200368709672,
+            "Infiltration": 0.5555555555555556,
+            "PortScan": 0.00957064414404481,
+            "WebAttack": 0.6369575361642558
+          },
+          "auc_unseen": 0.7993410758184307,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "calibration": "training data",
+          "fpr": 0.041825,
+          "dr_unseen": 0.35955752013821884,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6046057462465043,
+            "Infiltration": 0.4166666666666667,
+            "PortScan": 0.01481906190045648,
+            "WebAttack": 0.6369575361642558
+          },
+          "auc_unseen": 0.9230840903134607,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "calibration": "recent benign",
+          "fpr": 0.00814,
+          "dr_unseen": 0.3648394552022797,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6156592247722905,
+            "Infiltration": 0.0,
+            "PortScan": 0.009427305003638609,
+            "WebAttack": 0.7610825944937004
+          },
+          "auc_unseen": 0.8842989822963179,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "calibration": "recent benign",
+          "fpr": 0.00882,
+          "dr_unseen": 0.33598851167904503,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.5697970534472792,
+            "Infiltration": 0.3888888888888889,
+            "PortScan": 0.008512139722583634,
+            "WebAttack": 0.5328978068128791
+          },
+          "auc_unseen": 0.8103368612874997,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "calibration": "recent benign",
+          "fpr": 0.00979,
+          "dr_unseen": 0.3359660735521799,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.5698126767384817,
+            "Infiltration": 0.25,
+            "PortScan": 0.008490087547136526,
+            "WebAttack": 0.5328978068128791
+          },
+          "auc_unseen": 0.89832139602172,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "calibration": null,
+          "fpr": 0.001055,
+          "dr_unseen": 0.36607355217986404,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6351883387754464,
+            "Infiltration": 0.0,
+            "PortScan": 0.002480869737799634,
+            "WebAttack": 0.01679888007466169
+          },
+          "confident_miss": 0.0659770682343438,
+          "auc_unseen": 0.9557992321448605,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "calibration": "training data",
+          "fpr": 0.01299,
+          "dr_unseen": 0.4194718064935939,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.7046573031074727,
+            "Infiltration": 0.5555555555555556,
+            "PortScan": 0.015469601076146162,
+            "WebAttack": 0.860475968268782
+          },
+          "auc_unseen": 0.9558311992169094,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "calibration": "training data",
+          "fpr": 0.019575,
+          "dr_unseen": 0.3788902102452487,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6381489524583249,
+            "Infiltration": 0.5833333333333334,
+            "PortScan": 0.010088870267051844,
+            "WebAttack": 0.8408772748483434
+          },
+          "auc_unseen": 0.9372641272353983,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "calibration": "training data",
+          "fpr": 0.041075,
+          "dr_unseen": 0.38112056005564654,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6386020279031981,
+            "Infiltration": 0.4444444444444444,
+            "PortScan": 0.01498445321630979,
+            "WebAttack": 0.8408772748483434
+          },
+          "auc_unseen": 0.9300813672672605,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "calibration": "recent benign",
+          "fpr": 0.00853,
+          "dr_unseen": 0.3873045078196872,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6515303013732873,
+            "Infiltration": 0.19444444444444445,
+            "PortScan": 0.011665600811520056,
+            "WebAttack": 0.8562762482501166
+          },
+          "auc_unseen": 0.9558669560549286,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "calibration": "recent benign",
+          "fpr": 0.009095,
+          "dr_unseen": 0.37844144770794536,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6377818051150655,
+            "Infiltration": 0.4166666666666667,
+            "PortScan": 0.009691931109003904,
+            "WebAttack": 0.835744283714419
+          },
+          "auc_unseen": 0.9310880143491822,
+          "features": "no_port_window"
+        },
+        {
+          "scenario": "temporal",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "calibration": "recent benign",
+          "fpr": 0.010065,
+          "dr_unseen": 0.3784234972064532,
+          "dr_known": null,
+          "by_family": {
+            "Botnet": 0.0,
+            "DDoS": 0.6377974284062681,
+            "Infiltration": 0.3055555555555556,
+            "PortScan": 0.009669878933556796,
+            "WebAttack": 0.835744283714419
+          },
+          "auc_unseen": 0.9461542747099873,
+          "features": "no_port_window"
+        }
+      ],
+      "unseen_scores": {
+        "all": {
+          "xgboost": [
+            34403,
+            10508,
+            5247,
+            13861,
+            24523,
+            241,
+            292,
+            42,
+            14,
+            59,
+            54,
+            120,
+            362,
+            3864,
+            4669,
+            17842,
+            5209,
+            5740,
+            3531,
+            747,
+            1471,
+            870,
+            5046,
+            7928,
+            13206,
+            16130,
+            12659,
+            11714,
+            18663,
+            1171,
+            2649
+          ],
+          "random_forest": [
+            11184,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            3,
+            37093,
+            23789,
+            6652,
+            5277,
+            6185,
+            4974,
+            11972,
+            10401,
+            14971,
+            5972,
+            2187,
+            1124,
+            81043
+          ]
+        },
+        "no_port": {
+          "xgboost": [
+            2,
+            7,
+            17,
+            46,
+            75,
+            507,
+            6742,
+            25390,
+            6981,
+            22928,
+            37850,
+            19168,
+            8721,
+            6402,
+            4205,
+            6031,
+            9604,
+            36238,
+            17361,
+            6919,
+            1811,
+            2203,
+            684,
+            48,
+            71,
+            172,
+            614,
+            819,
+            101,
+            378,
+            740
+          ],
+          "random_forest": [
+            3404,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            14,
+            4,
+            2,
+            15,
+            13,
+            1,
+            0,
+            3,
+            86,
+            7241,
+            2358,
+            42964,
+            55959,
+            7864,
+            16063,
+            2130,
+            653,
+            542,
+            1865,
+            300,
+            81350
+          ]
+        },
+        "no_port_window": {
+          "xgboost": [
+            0,
+            3,
+            11,
+            487,
+            51,
+            286,
+            557,
+            9995,
+            26722,
+            17306,
+            31980,
+            12836,
+            19259,
+            6198,
+            4755,
+            3360,
+            1171,
+            937,
+            1073,
+            844,
+            275,
+            172,
+            100,
+            436,
+            198,
+            1264,
+            4405,
+            9157,
+            10934,
+            20356,
+            37707
+          ],
+          "random_forest": [
+            3509,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            48,
+            0,
+            4,
+            0,
+            20,
+            0,
+            0,
+            0,
+            0,
+            2,
+            16,
+            1787,
+            6796,
+            2518,
+            46314,
+            31765,
+            21777,
+            6653,
+            14506,
+            2604,
+            1734,
+            948,
+            732,
+            81100
+          ]
+        }
+      },
+      "unseen": [
+        "Botnet",
+        "DDoS",
+        "Infiltration",
+        "PortScan",
+        "WebAttack"
+      ],
+      "train_days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday"
+      ],
+      "test_days": [
+        "Thursday",
+        "Friday"
+      ]
+    }
+  },
+  "loao": {
+    "created_at": "2026-11-01T00:57:46",
+    "quick": true,
+    "seconds": 94,
+    "result": {
+      "rows": [
+        {
+          "scenario": "leave out Botnet",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01152,
+          "dr_unseen": 0.0,
+          "dr_known": 0.010020630710285883,
+          "by_family": {
+            "Botnet": 0.0
+          },
+          "auc_unseen": 0.680918429158111,
+          "features": "all",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01264,
+          "dr_unseen": 0.0,
+          "dr_known": 0.1256115531977601,
+          "by_family": {
+            "Botnet": 0.0
+          },
+          "auc_unseen": 0.5851425410677618,
+          "features": "all",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00108,
+          "dr_unseen": 0.0,
+          "dr_known": 0.9997052755673446,
+          "by_family": {
+            "Botnet": 0.0
+          },
+          "confident_miss": 0.9958932238193019,
+          "auc_unseen": 0.8734447689938398,
+          "features": "all",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.0099,
+          "dr_unseen": 0.019507186858316223,
+          "dr_known": 0.9999410551134689,
+          "by_family": {
+            "Botnet": 0.019507186858316223
+          },
+          "auc_unseen": 0.8734523459958932,
+          "features": "all",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01216,
+          "dr_unseen": 0.004106776180698152,
+          "dr_known": 0.9999410551134689,
+          "by_family": {
+            "Botnet": 0.004106776180698152
+          },
+          "auc_unseen": 0.7998052104722793,
+          "features": "all",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01232,
+          "dr_unseen": 0.004106776180698152,
+          "dr_known": 0.9999410551134689,
+          "by_family": {
+            "Botnet": 0.004106776180698152
+          },
+          "auc_unseen": 0.7995053336755646,
+          "features": "all",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00132,
+          "dr_unseen": 0.0,
+          "dr_known": 0.9990568818155025,
+          "by_family": {
+            "Botnet": 0.0
+          },
+          "confident_miss": 0.5441478439425051,
+          "auc_unseen": 0.6609391529774127,
+          "features": "all",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01128,
+          "dr_unseen": 0.015400410677618069,
+          "dr_known": 0.9999410551134689,
+          "by_family": {
+            "Botnet": 0.015400410677618069
+          },
+          "auc_unseen": 0.6609326026694045,
+          "features": "all",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01284,
+          "dr_unseen": 0.0,
+          "dr_known": 0.9998821102269378,
+          "by_family": {
+            "Botnet": 0.0
+          },
+          "auc_unseen": 0.729794681724846,
+          "features": "all",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.013,
+          "dr_unseen": 0.0,
+          "dr_known": 0.9999410551134689,
+          "by_family": {
+            "Botnet": 0.0
+          },
+          "auc_unseen": 0.7554364117043122,
+          "features": "all",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01152,
+          "dr_unseen": 0.0,
+          "dr_known": 0.010193679918450561,
+          "by_family": {
+            "BruteForce": 0.0
+          },
+          "auc_unseen": 0.854779531147541,
+          "features": "all",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01264,
+          "dr_unseen": 0.0,
+          "dr_known": 0.12778077591893025,
+          "by_family": {
+            "BruteForce": 0.0
+          },
+          "auc_unseen": 0.759649337704918,
+          "features": "all",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00162,
+          "dr_unseen": 0.018688524590163933,
+          "dr_known": 0.9996402230617017,
+          "by_family": {
+            "BruteForce": 0.018688524590163933
+          },
+          "confident_miss": 0.76,
+          "auc_unseen": 0.9476230240437158,
+          "features": "all",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01268,
+          "dr_unseen": 0.24021857923497267,
+          "dr_known": 1.0,
+          "by_family": {
+            "BruteForce": 0.24021857923497267
+          },
+          "auc_unseen": 0.9476242109289617,
+          "features": "all",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01288,
+          "dr_unseen": 0.23868852459016393,
+          "dr_known": 0.9999400371769502,
+          "by_family": {
+            "BruteForce": 0.23868852459016393
+          },
+          "auc_unseen": 0.9058455825136612,
+          "features": "all",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01314,
+          "dr_unseen": 0.23868852459016393,
+          "dr_known": 1.0,
+          "by_family": {
+            "BruteForce": 0.23868852459016393
+          },
+          "auc_unseen": 0.9055439081967214,
+          "features": "all",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00196,
+          "dr_unseen": 0.018032786885245903,
+          "dr_known": 0.9988607063620555,
+          "by_family": {
+            "BruteForce": 0.018032786885245903
+          },
+          "confident_miss": 0.0015300546448087432,
+          "auc_unseen": 0.9478822732240437,
+          "features": "all",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.0125,
+          "dr_unseen": 0.22295081967213115,
+          "dr_known": 0.9997601487078012,
+          "by_family": {
+            "BruteForce": 0.22295081967213115
+          },
+          "auc_unseen": 0.9478501475409836,
+          "features": "all",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01268,
+          "dr_unseen": 0.025901639344262296,
+          "dr_known": 0.9996402230617017,
+          "by_family": {
+            "BruteForce": 0.025901639344262296
+          },
+          "auc_unseen": 0.9077291978142077,
+          "features": "all",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01286,
+          "dr_unseen": 0.025901639344262296,
+          "dr_known": 0.9997001858847514,
+          "by_family": {
+            "BruteForce": 0.025901639344262296
+          },
+          "auc_unseen": 0.9076084229508197,
+          "features": "all",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01152,
+          "dr_unseen": 0.0,
+          "dr_known": 0.014264138278234603,
+          "by_family": {
+            "DDoS": 0.0
+          },
+          "auc_unseen": 0.9118348543128096,
+          "features": "all",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01264,
+          "dr_unseen": 0.0001640445576265096,
+          "dr_known": 0.17880516865245846,
+          "by_family": {
+            "DDoS": 0.0001640445576265096
+          },
+          "auc_unseen": 0.8536756478978862,
+          "features": "all",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00158,
+          "dr_unseen": 0.6305716562251004,
+          "dr_known": 0.9996643732169828,
+          "by_family": {
+            "DDoS": 0.6305716562251004
+          },
+          "confident_miss": 0.363811770587592,
+          "auc_unseen": 0.9746729306950802,
+          "features": "all",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.0141,
+          "dr_unseen": 0.6381255175215211,
+          "dr_known": 0.9998321866084914,
+          "by_family": {
+            "DDoS": 0.6381255175215211
+          },
+          "auc_unseen": 0.9746644648241599,
+          "features": "all",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01316,
+          "dr_unseen": 0.6358288937147499,
+          "dr_known": 0.9998321866084914,
+          "by_family": {
+            "DDoS": 0.6358288937147499
+          },
+          "auc_unseen": 0.9559190973643508,
+          "features": "all",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.0134,
+          "dr_unseen": 0.6358288937147499,
+          "dr_known": 0.9999160933042457,
+          "by_family": {
+            "DDoS": 0.6358288937147499
+          },
+          "auc_unseen": 0.9551972109300545,
+          "features": "all",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00194,
+          "dr_unseen": 0.6350477291546237,
+          "dr_known": 0.9987413995636851,
+          "by_family": {
+            "DDoS": 0.6350477291546237
+          },
+          "confident_miss": 8.592810161388599e-05,
+          "auc_unseen": 0.9903756773477901,
+          "features": "all",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01324,
+          "dr_unseen": 0.6415782648772791,
+          "dr_known": 0.9996643732169828,
+          "by_family": {
+            "DDoS": 0.6415782648772791
+          },
+          "auc_unseen": 0.9904313148561876,
+          "features": "all",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.0126,
+          "dr_unseen": 0.6367584795413002,
+          "dr_known": 0.9995804665212283,
+          "by_family": {
+            "DDoS": 0.6367584795413002
+          },
+          "auc_unseen": 0.982450821394535,
+          "features": "all",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01282,
+          "dr_unseen": 0.6367584795413002,
+          "dr_known": 0.9996643732169828,
+          "by_family": {
+            "DDoS": 0.6367584795413002
+          },
+          "auc_unseen": 0.9812122906088396,
+          "features": "all",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01152,
+          "dr_unseen": 0.021446157498928982,
+          "dr_known": 0.0001076773985140519,
+          "by_family": {
+            "DoS": 0.021446157498928982
+          },
+          "auc_unseen": 0.9256948008939769,
+          "features": "all",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01264,
+          "dr_unseen": 0.2767870507533253,
+          "dr_known": 0.0001076773985140519,
+          "by_family": {
+            "DoS": 0.2767870507533253
+          },
+          "auc_unseen": 0.8445517272544273,
+          "features": "all",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00134,
+          "dr_unseen": 0.6892810504746026,
+          "dr_known": 0.999892322601486,
+          "by_family": {
+            "DoS": 0.6892810504746026
+          },
+          "confident_miss": 0.05825819005786075,
+          "auc_unseen": 0.9973881237321992,
+          "features": "all",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01096,
+          "dr_unseen": 0.9490815057215561,
+          "dr_known": 1.0,
+          "by_family": {
+            "DoS": 0.9490815057215561
+          },
+          "auc_unseen": 0.9973794170051771,
+          "features": "all",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01144,
+          "dr_unseen": 0.9400126973640066,
+          "dr_known": 0.999892322601486,
+          "by_family": {
+            "DoS": 0.9400126973640066
+          },
+          "auc_unseen": 0.9959517812956472,
+          "features": "all",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01172,
+          "dr_unseen": 0.9417727791226431,
+          "dr_known": 1.0,
+          "by_family": {
+            "DoS": 0.9417727791226431
+          },
+          "auc_unseen": 0.9951797595243134,
+          "features": "all",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00122,
+          "dr_unseen": 0.03318347690989517,
+          "dr_known": 0.9993539356089157,
+          "by_family": {
+            "DoS": 0.03318347690989517
+          },
+          "confident_miss": 0.019087338250550992,
+          "auc_unseen": 0.992276918773001,
+          "features": "all",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01078,
+          "dr_unseen": 0.9076963575082198,
+          "dr_known": 0.9996769678044578,
+          "by_family": {
+            "DoS": 0.9076963575082198
+          },
+          "auc_unseen": 0.9922734106358487,
+          "features": "all",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01304,
+          "dr_unseen": 0.8244718464341569,
+          "dr_known": 0.9996769678044578,
+          "by_family": {
+            "DoS": 0.8244718464341569
+          },
+          "auc_unseen": 0.9898649948126622,
+          "features": "all",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01324,
+          "dr_unseen": 0.8269132501638786,
+          "dr_known": 0.9997846452029719,
+          "by_family": {
+            "DoS": 0.8269132501638786
+          },
+          "auc_unseen": 0.9893841479088061,
+          "features": "all",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01152,
+          "dr_unseen": 0.5833333333333334,
+          "dr_known": 0.00997535500528107,
+          "by_family": {
+            "Infiltration": 0.5833333333333334
+          },
+          "auc_unseen": 0.9509841666666667,
+          "features": "all",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01264,
+          "dr_unseen": 0.3333333333333333,
+          "dr_known": 0.12504400891914094,
+          "by_family": {
+            "Infiltration": 0.3333333333333333
+          },
+          "auc_unseen": 0.9244497222222222,
+          "features": "all",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00158,
+          "dr_unseen": 0.027777777777777776,
+          "dr_known": 0.9996479286468725,
+          "by_family": {
+            "Infiltration": 0.027777777777777776
+          },
+          "confident_miss": 0.9444444444444444,
+          "auc_unseen": 0.9325922222222222,
+          "features": "all",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.0115,
+          "dr_unseen": 0.05555555555555555,
+          "dr_known": 0.9999413214411454,
+          "by_family": {
+            "Infiltration": 0.05555555555555555
+          },
+          "auc_unseen": 0.9326002777777778,
+          "features": "all",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01238,
+          "dr_unseen": 0.5555555555555556,
+          "dr_known": 0.9998826428822908,
+          "by_family": {
+            "Infiltration": 0.5555555555555556
+          },
+          "auc_unseen": 0.9669291666666667,
+          "features": "all",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01262,
+          "dr_unseen": 0.3888888888888889,
+          "dr_known": 0.9999413214411454,
+          "by_family": {
+            "Infiltration": 0.3888888888888889
+          },
+          "auc_unseen": 0.9344280555555555,
+          "features": "all",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00176,
+          "dr_unseen": 0.0,
+          "dr_known": 0.9990024644994719,
+          "by_family": {
+            "Infiltration": 0.0
+          },
+          "confident_miss": 0.0,
+          "auc_unseen": 0.9715086111111111,
+          "features": "all",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01342,
+          "dr_unseen": 0.2777777777777778,
+          "dr_known": 0.9997652857645816,
+          "by_family": {
+            "Infiltration": 0.2777777777777778
+          },
+          "auc_unseen": 0.9715350000000001,
+          "features": "all",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01394,
+          "dr_unseen": 0.6111111111111112,
+          "dr_known": 0.9997652857645816,
+          "by_family": {
+            "Infiltration": 0.6111111111111112
+          },
+          "auc_unseen": 0.9729947222222223,
+          "features": "all",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01412,
+          "dr_unseen": 0.3611111111111111,
+          "dr_known": 0.9998239643234362,
+          "by_family": {
+            "Infiltration": 0.3611111111111111
+          },
+          "auc_unseen": 0.9562755555555555,
+          "features": "all",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01152,
+          "dr_unseen": 0.0010033739828434075,
+          "dr_known": 0.012600656128839845,
+          "by_family": {
+            "PortScan": 0.0010033739828434075
+          },
+          "auc_unseen": 0.7988694889408339,
+          "features": "all",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01264,
+          "dr_unseen": 0.0010033739828434075,
+          "dr_known": 0.1588130032806442,
+          "by_family": {
+            "PortScan": 0.0010033739828434075
+          },
+          "auc_unseen": 0.6726818575649989,
+          "features": "all",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00116,
+          "dr_unseen": 0.006152556949743092,
+          "dr_known": 0.9996271995228154,
+          "by_family": {
+            "PortScan": 0.006152556949743092
+          },
+          "confident_miss": 0.9633603104946303,
+          "auc_unseen": 0.9076658670915386,
+          "features": "all",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.0103,
+          "dr_unseen": 0.03699252431252343,
+          "dr_known": 1.0,
+          "by_family": {
+            "PortScan": 0.03699252431252343
+          },
+          "auc_unseen": 0.9076767374909034,
+          "features": "all",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01124,
+          "dr_unseen": 0.020442366639468985,
+          "dr_known": 1.0,
+          "by_family": {
+            "PortScan": 0.020442366639468985
+          },
+          "auc_unseen": 0.8589367266853376,
+          "features": "all",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01148,
+          "dr_unseen": 0.02043134055174543,
+          "dr_known": 1.0,
+          "by_family": {
+            "PortScan": 0.02043134055174543
+          },
+          "auc_unseen": 0.8522925313692196,
+          "features": "all",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00128,
+          "dr_unseen": 0.005457913423159194,
+          "dr_known": 0.9987324783775723,
+          "by_family": {
+            "PortScan": 0.005457913423159194
+          },
+          "confident_miss": 0.18761990870399364,
+          "auc_unseen": 0.8649563133173088,
+          "features": "all",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01256,
+          "dr_unseen": 0.028943480274329064,
+          "dr_known": 0.9998508798091261,
+          "by_family": {
+            "PortScan": 0.028943480274329064
+          },
+          "auc_unseen": 0.8649769307782212,
+          "features": "all",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01336,
+          "dr_unseen": 0.018060731691181334,
+          "dr_known": 0.9997017596182524,
+          "by_family": {
+            "PortScan": 0.018060731691181334
+          },
+          "auc_unseen": 0.8136334760844157,
+          "features": "all",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01356,
+          "dr_unseen": 0.018082783866628444,
+          "dr_known": 0.9997017596182524,
+          "by_family": {
+            "PortScan": 0.018082783866628444
+          },
+          "auc_unseen": 0.810460290096368,
+          "features": "all",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01152,
+          "dr_unseen": 0.0,
+          "dr_known": 0.010025358259126024,
+          "by_family": {
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.8564472701819879,
+          "features": "all",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01264,
+          "dr_unseen": 0.0,
+          "dr_known": 0.12567081441292682,
+          "by_family": {
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.8812281941203921,
+          "features": "all",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00142,
+          "dr_unseen": 0.8796080261315913,
+          "dr_known": 0.9996461638261485,
+          "by_family": {
+            "WebAttack": 0.8796080261315913
+          },
+          "confident_miss": 0.04293047130191321,
+          "auc_unseen": 0.9960717965468968,
+          "features": "all",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01132,
+          "dr_unseen": 0.9570695286980868,
+          "dr_known": 0.9998230819130742,
+          "by_family": {
+            "WebAttack": 0.9570695286980868
+          },
+          "auc_unseen": 0.9961297713485768,
+          "features": "all",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01112,
+          "dr_unseen": 0.949603359776015,
+          "dr_known": 0.9998230819130742,
+          "by_family": {
+            "WebAttack": 0.949603359776015
+          },
+          "auc_unseen": 0.9933154876341578,
+          "features": "all",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.0114,
+          "dr_unseen": 0.949603359776015,
+          "dr_known": 0.9998820546087162,
+          "by_family": {
+            "WebAttack": 0.949603359776015
+          },
+          "auc_unseen": 0.9951989174055063,
+          "features": "all",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.0017,
+          "dr_unseen": 0.014932337844143724,
+          "dr_known": 0.9988205460871616,
+          "by_family": {
+            "WebAttack": 0.014932337844143724
+          },
+          "confident_miss": 0.0,
+          "auc_unseen": 0.9873904806346244,
+          "features": "all",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01278,
+          "dr_unseen": 0.49930004666355576,
+          "dr_known": 0.9997641092174323,
+          "by_family": {
+            "WebAttack": 0.49930004666355576
+          },
+          "auc_unseen": 0.9874022958469435,
+          "features": "all",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01298,
+          "dr_unseen": 0.18198786747550164,
+          "dr_known": 0.9996461638261485,
+          "by_family": {
+            "WebAttack": 0.18198786747550164
+          },
+          "auc_unseen": 0.9766872375174989,
+          "features": "all",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01316,
+          "dr_unseen": 0.18198786747550164,
+          "dr_known": 0.9997051365217904,
+          "by_family": {
+            "WebAttack": 0.18198786747550164
+          },
+          "auc_unseen": 0.9766600419972001,
+          "features": "all",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01158,
+          "dr_unseen": 0.004106776180698152,
+          "dr_known": 0.010197465369879163,
+          "by_family": {
+            "Botnet": 0.004106776180698152
+          },
+          "auc_unseen": 0.6550197125256674,
+          "features": "no_shortcuts",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01254,
+          "dr_unseen": 0.0,
+          "dr_known": 0.13669319186560566,
+          "by_family": {
+            "Botnet": 0.0
+          },
+          "auc_unseen": 0.7026284394250514,
+          "features": "no_shortcuts",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00156,
+          "dr_unseen": 0.005646817248459959,
+          "dr_known": 0.9995873857942823,
+          "by_family": {
+            "Botnet": 0.005646817248459959
+          },
+          "confident_miss": 0.9758726899383984,
+          "auc_unseen": 0.8485519404517454,
+          "features": "no_shortcuts",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.0099,
+          "dr_unseen": 0.02104722792607803,
+          "dr_known": 0.9999410551134689,
+          "by_family": {
+            "Botnet": 0.02104722792607803
+          },
+          "auc_unseen": 0.8485803234086242,
+          "features": "no_shortcuts",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.0103,
+          "dr_unseen": 0.013347022587268994,
+          "dr_known": 0.9999410551134689,
+          "by_family": {
+            "Botnet": 0.013347022587268994
+          },
+          "auc_unseen": 0.8012470739219713,
+          "features": "no_shortcuts",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01104,
+          "dr_unseen": 0.013347022587268994,
+          "dr_known": 1.0,
+          "by_family": {
+            "Botnet": 0.013347022587268994
+          },
+          "auc_unseen": 0.8040835318275155,
+          "features": "no_shortcuts",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.0022,
+          "dr_unseen": 0.0,
+          "dr_known": 0.9981727085175361,
+          "by_family": {
+            "Botnet": 0.0
+          },
+          "confident_miss": 0.5728952772073922,
+          "auc_unseen": 0.7690893685831622,
+          "features": "no_shortcuts",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01022,
+          "dr_unseen": 0.0,
+          "dr_known": 0.9997052755673446,
+          "by_family": {
+            "Botnet": 0.0
+          },
+          "auc_unseen": 0.7690896047227924,
+          "features": "no_shortcuts",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01092,
+          "dr_unseen": 0.0,
+          "dr_known": 0.9994694960212201,
+          "by_family": {
+            "Botnet": 0.0
+          },
+          "auc_unseen": 0.7505260420944558,
+          "features": "no_shortcuts",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out Botnet",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.0116,
+          "dr_unseen": 0.0,
+          "dr_known": 0.9995284409077513,
+          "by_family": {
+            "Botnet": 0.0
+          },
+          "auc_unseen": 0.7548813039014374,
+          "features": "no_shortcuts",
+          "held_out": "Botnet"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01158,
+          "dr_unseen": 0.0,
+          "dr_known": 0.010373568387599688,
+          "by_family": {
+            "BruteForce": 0.0
+          },
+          "auc_unseen": 0.8334311081967213,
+          "features": "no_shortcuts",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01254,
+          "dr_unseen": 0.0,
+          "dr_known": 0.13905378665227558,
+          "by_family": {
+            "BruteForce": 0.0
+          },
+          "auc_unseen": 0.8173415180327869,
+          "features": "no_shortcuts",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00238,
+          "dr_unseen": 0.005245901639344262,
+          "dr_known": 0.9993404089464532,
+          "by_family": {
+            "BruteForce": 0.005245901639344262
+          },
+          "confident_miss": 0.7478688524590164,
+          "auc_unseen": 0.9161183978142076,
+          "features": "no_shortcuts",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01092,
+          "dr_unseen": 0.026885245901639345,
+          "dr_known": 0.9997601487078012,
+          "by_family": {
+            "BruteForce": 0.026885245901639345
+          },
+          "auc_unseen": 0.9161399770491803,
+          "features": "no_shortcuts",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01242,
+          "dr_unseen": 0.023060109289617485,
+          "dr_known": 0.9997601487078012,
+          "by_family": {
+            "BruteForce": 0.023060109289617485
+          },
+          "auc_unseen": 0.858345374863388,
+          "features": "no_shortcuts",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01316,
+          "dr_unseen": 0.023060109289617485,
+          "dr_known": 0.9998201115308508,
+          "by_family": {
+            "BruteForce": 0.023060109289617485
+          },
+          "auc_unseen": 0.8829692513661203,
+          "features": "no_shortcuts",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00256,
+          "dr_unseen": 0.0004371584699453552,
+          "dr_known": 0.9977813755471607,
+          "by_family": {
+            "BruteForce": 0.0004371584699453552
+          },
+          "confident_miss": 0.24601092896174864,
+          "auc_unseen": 0.8121563573770493,
+          "features": "no_shortcuts",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01168,
+          "dr_unseen": 0.0073224043715847,
+          "dr_known": 0.9992804461234035,
+          "by_family": {
+            "BruteForce": 0.0073224043715847
+          },
+          "auc_unseen": 0.812141919125683,
+          "features": "no_shortcuts",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01152,
+          "dr_unseen": 0.004371584699453552,
+          "dr_known": 0.9989206691851052,
+          "by_family": {
+            "BruteForce": 0.004371584699453552
+          },
+          "auc_unseen": 0.8526227562841531,
+          "features": "no_shortcuts",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out BruteForce",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.0122,
+          "dr_unseen": 0.004371584699453552,
+          "dr_known": 0.9989806320081549,
+          "by_family": {
+            "BruteForce": 0.004371584699453552
+          },
+          "auc_unseen": 0.829510831693989,
+          "features": "no_shortcuts",
+          "held_out": "BruteForce"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01158,
+          "dr_unseen": 0.0,
+          "dr_known": 0.014515858365497568,
+          "by_family": {
+            "DDoS": 0.0
+          },
+          "auc_unseen": 0.9157215065539707,
+          "features": "no_shortcuts",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01254,
+          "dr_unseen": 0.00021091443123408377,
+          "dr_known": 0.19457962745427085,
+          "by_family": {
+            "DDoS": 0.00021091443123408377
+          },
+          "auc_unseen": 0.930927886637399,
+          "features": "no_shortcuts",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00234,
+          "dr_unseen": 0.580897401846673,
+          "dr_known": 0.9991609330424568,
+          "by_family": {
+            "DDoS": 0.580897401846673
+          },
+          "confident_miss": 0.3639992500820223,
+          "auc_unseen": 0.9423479877200931,
+          "features": "no_shortcuts",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01156,
+          "dr_unseen": 0.6350321058634212,
+          "dr_known": 0.9997482799127371,
+          "by_family": {
+            "DDoS": 0.6350321058634212
+          },
+          "auc_unseen": 0.9423519495523927,
+          "features": "no_shortcuts",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01136,
+          "dr_unseen": 0.6319699407877264,
+          "dr_known": 0.9997482799127371,
+          "by_family": {
+            "DDoS": 0.6319699407877264
+          },
+          "auc_unseen": 0.9460593064821035,
+          "features": "no_shortcuts",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01214,
+          "dr_unseen": 0.6319699407877264,
+          "dr_known": 0.9998321866084914,
+          "by_family": {
+            "DDoS": 0.6319699407877264
+          },
+          "auc_unseen": 0.9551252560657428,
+          "features": "no_shortcuts",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00262,
+          "dr_unseen": 0.6354929929538957,
+          "dr_known": 0.9970632656485987,
+          "by_family": {
+            "DDoS": 0.6354929929538957
+          },
+          "confident_miss": 0.00011717468401893543,
+          "auc_unseen": 0.9772698643898323,
+          "features": "no_shortcuts",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.0118,
+          "dr_unseen": 0.6362194759948131,
+          "dr_known": 0.999496559825474,
+          "by_family": {
+            "DDoS": 0.6362194759948131
+          },
+          "auc_unseen": 0.9772399404752605,
+          "features": "no_shortcuts",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01174,
+          "dr_unseen": 0.6357039073851297,
+          "dr_known": 0.9989092129551939,
+          "by_family": {
+            "DDoS": 0.6357039073851297
+          },
+          "auc_unseen": 0.9605522555345509,
+          "features": "no_shortcuts",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DDoS",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.0125,
+          "dr_unseen": 0.6357039073851297,
+          "dr_known": 0.9989931196509482,
+          "by_family": {
+            "DDoS": 0.6357039073851297
+          },
+          "auc_unseen": 0.9634558010842564,
+          "features": "no_shortcuts",
+          "held_out": "DDoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01158,
+          "dr_unseen": 0.022519755756396427,
+          "dr_known": 0.0002153547970281038,
+          "by_family": {
+            "DoS": 0.022519755756396427
+          },
+          "auc_unseen": 0.9145341241657677,
+          "features": "no_shortcuts",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01254,
+          "dr_unseen": 0.30403992959672965,
+          "dr_known": 0.0001076773985140519,
+          "by_family": {
+            "DoS": 0.30403992959672965
+          },
+          "auc_unseen": 0.9411382341889429,
+          "features": "no_shortcuts",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00178,
+          "dr_unseen": 0.12175017162087529,
+          "dr_known": 0.9995692904059438,
+          "by_family": {
+            "DoS": 0.12175017162087529
+          },
+          "confident_miss": 0.10176988866579609,
+          "auc_unseen": 0.9870083407229238,
+          "features": "no_shortcuts",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01172,
+          "dr_unseen": 0.8138803867018339,
+          "dr_known": 0.9997846452029719,
+          "by_family": {
+            "DoS": 0.8138803867018339
+          },
+          "auc_unseen": 0.9870117891411729,
+          "features": "no_shortcuts",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01156,
+          "dr_unseen": 0.6385019175084262,
+          "dr_known": 0.9997846452029719,
+          "by_family": {
+            "DoS": 0.6385019175084262
+          },
+          "auc_unseen": 0.9826556043893653,
+          "features": "no_shortcuts",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01234,
+          "dr_unseen": 0.8547132511961846,
+          "dr_known": 0.999892322601486,
+          "by_family": {
+            "DoS": 0.8547132511961846
+          },
+          "auc_unseen": 0.9899754467562364,
+          "features": "no_shortcuts",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00146,
+          "dr_unseen": 0.0335757531962775,
+          "dr_known": 0.9990309034133735,
+          "by_family": {
+            "DoS": 0.0335757531962775
+          },
+          "confident_miss": 0.02080096623843172,
+          "auc_unseen": 0.9802016656773734,
+          "features": "no_shortcuts",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01014,
+          "dr_unseen": 0.7841241657677002,
+          "dr_known": 0.9995692904059438,
+          "by_family": {
+            "DoS": 0.7841241657677002
+          },
+          "auc_unseen": 0.9801989777073514,
+          "features": "no_shortcuts",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01014,
+          "dr_unseen": 0.5182072973712327,
+          "dr_known": 0.9994616130074297,
+          "by_family": {
+            "DoS": 0.5182072973712327
+          },
+          "auc_unseen": 0.9797907886301814,
+          "features": "no_shortcuts",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out DoS",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01096,
+          "dr_unseen": 0.7468424339711264,
+          "dr_known": 0.9995692904059438,
+          "by_family": {
+            "DoS": 0.7468424339711264
+          },
+          "auc_unseen": 0.9875450120005574,
+          "features": "no_shortcuts",
+          "held_out": "DoS"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01158,
+          "dr_unseen": 0.75,
+          "dr_known": 0.010151390681844855,
+          "by_family": {
+            "Infiltration": 0.75
+          },
+          "auc_unseen": 0.9537813888888889,
+          "features": "no_shortcuts",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01254,
+          "dr_unseen": 0.3055555555555556,
+          "dr_known": 0.1360755779838047,
+          "by_family": {
+            "Infiltration": 0.3055555555555556
+          },
+          "auc_unseen": 0.9518947222222223,
+          "features": "no_shortcuts",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00236,
+          "dr_unseen": 0.027777777777777776,
+          "dr_known": 0.9995892500880178,
+          "by_family": {
+            "Infiltration": 0.027777777777777776
+          },
+          "confident_miss": 0.9166666666666666,
+          "auc_unseen": 0.8906977777777778,
+          "features": "no_shortcuts",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01058,
+          "dr_unseen": 0.05555555555555555,
+          "dr_known": 0.9998239643234362,
+          "by_family": {
+            "Infiltration": 0.05555555555555555
+          },
+          "auc_unseen": 0.890701388888889,
+          "features": "no_shortcuts",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01142,
+          "dr_unseen": 0.3611111111111111,
+          "dr_known": 0.9997652857645816,
+          "by_family": {
+            "Infiltration": 0.3611111111111111
+          },
+          "auc_unseen": 0.9596522222222222,
+          "features": "no_shortcuts",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01216,
+          "dr_unseen": 0.3611111111111111,
+          "dr_known": 0.9998239643234362,
+          "by_family": {
+            "Infiltration": 0.3611111111111111
+          },
+          "auc_unseen": 0.9346425,
+          "features": "no_shortcuts",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00272,
+          "dr_unseen": 0.0,
+          "dr_known": 0.9979462504400892,
+          "by_family": {
+            "Infiltration": 0.0
+          },
+          "confident_miss": 0.0,
+          "auc_unseen": 0.9638344444444444,
+          "features": "no_shortcuts",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01188,
+          "dr_unseen": 0.1111111111111111,
+          "dr_known": 0.9995892500880178,
+          "by_family": {
+            "Infiltration": 0.1111111111111111
+          },
+          "auc_unseen": 0.9638402777777777,
+          "features": "no_shortcuts",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01158,
+          "dr_unseen": 0.3888888888888889,
+          "dr_known": 0.999119821617181,
+          "by_family": {
+            "Infiltration": 0.3888888888888889
+          },
+          "auc_unseen": 0.9696411111111112,
+          "features": "no_shortcuts",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out Infiltration",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01228,
+          "dr_unseen": 0.3055555555555556,
+          "dr_known": 0.9991785001760357,
+          "by_family": {
+            "Infiltration": 0.3055555555555556
+          },
+          "auc_unseen": 0.9457133333333334,
+          "features": "no_shortcuts",
+          "held_out": "Infiltration"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01158,
+          "dr_unseen": 0.00061746091251902,
+          "dr_known": 0.012749776319713689,
+          "by_family": {
+            "PortScan": 0.00061746091251902
+          },
+          "auc_unseen": 0.6724243331422144,
+          "features": "no_shortcuts",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01254,
+          "dr_unseen": 6.615652634132357e-05,
+          "dr_known": 0.17283030122278556,
+          "by_family": {
+            "PortScan": 6.615652634132357e-05
+          },
+          "auc_unseen": 0.8175211754912122,
+          "features": "no_shortcuts",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.0018,
+          "dr_unseen": 0.010507861600546894,
+          "dr_known": 0.9994035192365046,
+          "by_family": {
+            "PortScan": 0.010507861600546894
+          },
+          "confident_miss": 0.753136921957351,
+          "auc_unseen": 0.8610528894965488,
+          "features": "no_shortcuts",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01104,
+          "dr_unseen": 0.031247932608551833,
+          "dr_known": 0.9998508798091261,
+          "by_family": {
+            "PortScan": 0.031247932608551833
+          },
+          "auc_unseen": 0.8610577348005379,
+          "features": "no_shortcuts",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01164,
+          "dr_unseen": 0.010993009460383266,
+          "dr_known": 0.9997763197136892,
+          "by_family": {
+            "PortScan": 0.010993009460383266
+          },
+          "auc_unseen": 0.7817233004388383,
+          "features": "no_shortcuts",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01236,
+          "dr_unseen": 0.011026087723553929,
+          "dr_known": 0.9997763197136892,
+          "by_family": {
+            "PortScan": 0.011026087723553929
+          },
+          "auc_unseen": 0.7888821601208459,
+          "features": "no_shortcuts",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00226,
+          "dr_unseen": 0.00339603501885461,
+          "dr_known": 0.9967939158962124,
+          "by_family": {
+            "PortScan": 0.00339603501885461
+          },
+          "confident_miss": 0.1541998368139017,
+          "auc_unseen": 0.8910307219882241,
+          "features": "no_shortcuts",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01002,
+          "dr_unseen": 0.010772487705912189,
+          "dr_known": 0.9993289591410677,
+          "by_family": {
+            "PortScan": 0.010772487705912189
+          },
+          "auc_unseen": 0.8910516614108981,
+          "features": "no_shortcuts",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01056,
+          "dr_unseen": 0.006957461353562529,
+          "dr_known": 0.9988070384730092,
+          "by_family": {
+            "PortScan": 0.006957461353562529
+          },
+          "auc_unseen": 0.8092112419785211,
+          "features": "no_shortcuts",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out PortScan",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01126,
+          "dr_unseen": 0.006990539616733191,
+          "dr_known": 0.9988070384730092,
+          "by_family": {
+            "PortScan": 0.006990539616733191
+          },
+          "auc_unseen": 0.8143988886806183,
+          "features": "no_shortcuts",
+          "held_out": "PortScan"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "none",
+          "detector": "Isolation Forest",
+          "fpr": 0.01158,
+          "dr_unseen": 0.0,
+          "dr_known": 0.010202276346051777,
+          "by_family": {
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.8425724965002332,
+          "features": "no_shortcuts",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "none",
+          "detector": "Autoencoder",
+          "fpr": 0.01254,
+          "dr_unseen": 0.0,
+          "dr_known": 0.13675768119360737,
+          "by_family": {
+            "WebAttack": 0.0
+          },
+          "auc_unseen": 0.7973932571161924,
+          "features": "no_shortcuts",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "xgboost",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00222,
+          "dr_unseen": 0.8856742883807747,
+          "dr_known": 0.9995282184348646,
+          "by_family": {
+            "WebAttack": 0.8856742883807747
+          },
+          "confident_miss": 0.07419505366308912,
+          "auc_unseen": 0.9934314699020066,
+          "features": "no_shortcuts",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "xgboost",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01132,
+          "dr_unseen": 0.9248716752216519,
+          "dr_known": 0.9998230819130742,
+          "by_family": {
+            "WebAttack": 0.9248716752216519
+          },
+          "auc_unseen": 0.9934127064862341,
+          "features": "no_shortcuts",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01094,
+          "dr_unseen": 0.921138590760616,
+          "dr_known": 0.9997641092174323,
+          "by_family": {
+            "WebAttack": 0.921138590760616
+          },
+          "auc_unseen": 0.9878615212319178,
+          "features": "no_shortcuts",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "xgboost",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.01166,
+          "dr_unseen": 0.921138590760616,
+          "dr_known": 0.9998230819130742,
+          "by_family": {
+            "WebAttack": 0.921138590760616
+          },
+          "auc_unseen": 0.9873903733084461,
+          "features": "no_shortcuts",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "random_forest",
+          "detector": "Supervised, threshold 0.5",
+          "fpr": 0.00274,
+          "dr_unseen": 0.009332711152589827,
+          "dr_known": 0.9979949283481748,
+          "by_family": {
+            "WebAttack": 0.009332711152589827
+          },
+          "confident_miss": 0.018665422305179653,
+          "auc_unseen": 0.9790759122725152,
+          "features": "no_shortcuts",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "random_forest",
+          "detector": "Supervised, calibrated",
+          "fpr": 0.01192,
+          "dr_unseen": 0.1885207652823145,
+          "dr_known": 0.9994692457392227,
+          "by_family": {
+            "WebAttack": 0.1885207652823145
+          },
+          "auc_unseen": 0.9790990387307512,
+          "features": "no_shortcuts",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Isolation Forest",
+          "fpr": 0.01106,
+          "dr_unseen": 0.06626224918338777,
+          "dr_known": 0.9991743822610132,
+          "by_family": {
+            "WebAttack": 0.06626224918338777
+          },
+          "auc_unseen": 0.9626980261315913,
+          "features": "no_shortcuts",
+          "held_out": "WebAttack"
+        },
+        {
+          "scenario": "leave out WebAttack",
+          "model": "random_forest",
+          "detector": "Hybrid: supervised + Autoencoder",
+          "fpr": 0.0118,
+          "dr_unseen": 0.06626224918338777,
+          "dr_known": 0.9992333549566551,
+          "by_family": {
+            "WebAttack": 0.06626224918338777
+          },
+          "auc_unseen": 0.9614071068595427,
+          "features": "no_shortcuts",
+          "held_out": "WebAttack"
+        }
+      ],
+      "unseen_scores": {
+        "all": {
+          "xgboost": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            294,
+            628,
+            4544,
+            6583,
+            1929,
+            1557,
+            10566,
+            18422,
+            29863,
+            20569,
+            16133,
+            10983,
+            14547,
+            10275,
+            7357,
+            1525,
+            2808,
+            1860,
+            4174,
+            5823,
+            3873,
+            4279,
+            15182,
+            34554,
+            197397
+          ],
+          "random_forest": [
+            8174,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            31,
+            0,
+            0,
+            0,
+            40,
+            0,
+            17,
+            0,
+            2103,
+            3286,
+            5352,
+            2794,
+            22500,
+            18183,
+            21564,
+            10792,
+            28617,
+            39510,
+            42960,
+            80722,
+            55555,
+            83524
+          ]
+        },
+        "no_shortcuts": {
+          "xgboost": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            15,
+            2928,
+            18858,
+            19922,
+            24674,
+            9413,
+            11466,
+            15473,
+            4938,
+            5982,
+            11084,
+            18800,
+            27703,
+            18933,
+            19426,
+            17578,
+            15880,
+            16458,
+            24031,
+            26977,
+            28941,
+            86244
+          ],
+          "random_forest": [
+            5672,
+            0,
+            0,
+            0,
+            0,
+            0,
+            707,
+            0,
+            0,
+            12,
+            1,
+            4,
+            12,
+            23,
+            243,
+            2409,
+            3,
+            170,
+            1091,
+            8978,
+            2112,
+            8776,
+            11735,
+            30048,
+            60274,
+            26503,
+            14026,
+            47747,
+            89877,
+            32050,
+            83253
+          ]
+        }
+      },
+      "families": [
+        "Botnet",
+        "BruteForce",
+        "DDoS",
+        "DoS",
+        "Infiltration",
+        "PortScan",
+        "WebAttack"
+      ]
+    }
+  },
+  "shap": {
+    "created_at": "2026-11-01T00:57:46",
+    "quick": true,
+    "seconds": 10,
+    "result": {
+      "all": {
+        "by_category": {
+          "Benign": {
+            "shortcut_share": 0.1460324376821518,
+            "top_features": [
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.1479840874671936
+              },
+              {
+                "feature": "Destination Port",
+                "share": 0.1460324376821518
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.11733684688806534
+              },
+              {
+                "feature": "Init_Win_bytes_backward",
+                "share": 0.056861769407987595
+              },
+              {
+                "feature": "Bwd Packet Length Mean",
+                "share": 0.056372545659542084
+              }
+            ]
+          },
+          "Botnet": {
+            "shortcut_share": 0.08800856024026871,
+            "top_features": [
+              {
+                "feature": "Init_Win_bytes_backward",
+                "share": 0.10367866605520248
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.09130440652370453
+              },
+              {
+                "feature": "Destination Port",
+                "share": 0.08800856024026871
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.0864294022321701
+              },
+              {
+                "feature": "Bwd IAT Min",
+                "share": 0.06288625299930573
+              }
+            ]
+          },
+          "BruteForce": {
+            "shortcut_share": 0.25251978635787964,
+            "top_features": [
+              {
+                "feature": "Destination Port",
+                "share": 0.25251978635787964
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.08579321205615997
+              },
+              {
+                "feature": "Init_Win_bytes_backward",
+                "share": 0.05971140041947365
+              },
+              {
+                "feature": "Packet Length Std",
+                "share": 0.055048275738954544
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.052587248384952545
+              }
+            ]
+          },
+          "DDoS": {
+            "shortcut_share": 0.11271017789840698,
+            "top_features": [
+              {
+                "feature": "Bwd Packet Length Std",
+                "share": 0.26535892486572266
+              },
+              {
+                "feature": "Destination Port",
+                "share": 0.11271017789840698
+              },
+              {
+                "feature": "Init_Win_bytes_backward",
+                "share": 0.07402069866657257
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.0717487558722496
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.04601484164595604
+              }
+            ]
+          },
+          "DoS": {
+            "shortcut_share": 0.11084479093551636,
+            "top_features": [
+              {
+                "feature": "Bwd Packet Length Std",
+                "share": 0.2929898798465729
+              },
+              {
+                "feature": "Destination Port",
+                "share": 0.11084479093551636
+              },
+              {
+                "feature": "Init_Win_bytes_backward",
+                "share": 0.09196978062391281
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.06410430371761322
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.06301199644804001
+              }
+            ]
+          },
+          "Infiltration": {
+            "shortcut_share": 0.03263995051383972,
+            "top_features": [
+              {
+                "feature": "Idle Mean",
+                "share": 0.09202463179826736
+              },
+              {
+                "feature": "Fwd Packet Length Max",
+                "share": 0.08994976431131363
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.08343806117773056
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.06928157061338425
+              },
+              {
+                "feature": "Fwd Packets/s",
+                "share": 0.04604671150445938
+              }
+            ]
+          },
+          "PortScan": {
+            "shortcut_share": 0.0782303586602211,
+            "top_features": [
+              {
+                "feature": "Packet Length Std",
+                "share": 0.13385255634784698
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.1030060350894928
+              },
+              {
+                "feature": "Destination Port",
+                "share": 0.0782303586602211
+              },
+              {
+                "feature": "Total Fwd Packets",
+                "share": 0.06818997859954834
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.062369924038648605
+              }
+            ]
+          },
+          "WebAttack": {
+            "shortcut_share": 0.15143682062625885,
+            "top_features": [
+              {
+                "feature": "Destination Port",
+                "share": 0.15143682062625885
+              },
+              {
+                "feature": "Fwd IAT Min",
+                "share": 0.089607372879982
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.0848386362195015
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.06894277036190033
+              },
+              {
+                "feature": "min_seg_size_forward",
+                "share": 0.0656452625989914
+              }
+            ]
+          }
+        },
+        "global": [
+          {
+            "feature": "Destination Port",
+            "mean_abs_shap": 1.9682122468948364
+          },
+          {
+            "feature": "Bwd Packet Length Std",
+            "mean_abs_shap": 1.8253155946731567
+          },
+          {
+            "feature": "Bwd Packet Length Min",
+            "mean_abs_shap": 1.2361341714859009
+          },
+          {
+            "feature": "Init_Win_bytes_forward",
+            "mean_abs_shap": 1.100563883781433
+          },
+          {
+            "feature": "Init_Win_bytes_backward",
+            "mean_abs_shap": 0.9549381136894226
+          },
+          {
+            "feature": "Packet Length Std",
+            "mean_abs_shap": 0.6817004680633545
+          },
+          {
+            "feature": "Fwd Packet Length Max",
+            "mean_abs_shap": 0.4305373430252075
+          },
+          {
+            "feature": "min_seg_size_forward",
+            "mean_abs_shap": 0.4188182055950165
+          },
+          {
+            "feature": "Bwd Packet Length Mean",
+            "mean_abs_shap": 0.38073334097862244
+          },
+          {
+            "feature": "Fwd IAT Min",
+            "mean_abs_shap": 0.329528272151947
+          },
+          {
+            "feature": "PSH Flag Count",
+            "mean_abs_shap": 0.3264734447002411
+          },
+          {
+            "feature": "Total Fwd Packets",
+            "mean_abs_shap": 0.3062247335910797
+          },
+          {
+            "feature": "Bwd Packets/s",
+            "mean_abs_shap": 0.2505464255809784
+          },
+          {
+            "feature": "Fwd Header Length",
+            "mean_abs_shap": 0.2449387013912201
+          },
+          {
+            "feature": "Fwd IAT Max",
+            "mean_abs_shap": 0.23658180236816406
+          }
+        ]
+      },
+      "no_shortcuts": {
+        "by_category": {
+          "Benign": {
+            "shortcut_share": 0.0,
+            "top_features": [
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.16561904549598694
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.1167752593755722
+              },
+              {
+                "feature": "Init_Win_bytes_backward",
+                "share": 0.09818755090236664
+              },
+              {
+                "feature": "Fwd Packet Length Max",
+                "share": 0.05485648289322853
+              },
+              {
+                "feature": "Packet Length Std",
+                "share": 0.04125155135989189
+              }
+            ]
+          },
+          "Botnet": {
+            "shortcut_share": 0.0,
+            "top_features": [
+              {
+                "feature": "Init_Win_bytes_backward",
+                "share": 0.14479133486747742
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.09735681116580963
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.08441388607025146
+              },
+              {
+                "feature": "Packet Length Std",
+                "share": 0.0628710389137268
+              },
+              {
+                "feature": "Fwd Packet Length Max",
+                "share": 0.039133887737989426
+              }
+            ]
+          },
+          "BruteForce": {
+            "shortcut_share": 0.0,
+            "top_features": [
+              {
+                "feature": "Init_Win_bytes_backward",
+                "share": 0.11522116512060165
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.10295352339744568
+              },
+              {
+                "feature": "Packet Length Std",
+                "share": 0.1007537990808487
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.09594845026731491
+              },
+              {
+                "feature": "Fwd Packet Length Max",
+                "share": 0.04013114050030708
+              }
+            ]
+          },
+          "DDoS": {
+            "shortcut_share": 0.0,
+            "top_features": [
+              {
+                "feature": "Bwd Packet Length Std",
+                "share": 0.27611014246940613
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.09184961020946503
+              },
+              {
+                "feature": "Init_Win_bytes_backward",
+                "share": 0.07533778995275497
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.05127829685807228
+              },
+              {
+                "feature": "Packet Length Std",
+                "share": 0.04295923933386803
+              }
+            ]
+          },
+          "DoS": {
+            "shortcut_share": 0.0,
+            "top_features": [
+              {
+                "feature": "Bwd Packet Length Std",
+                "share": 0.2912801206111908
+              },
+              {
+                "feature": "Init_Win_bytes_backward",
+                "share": 0.14197401702404022
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.07651694118976593
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.06147116422653198
+              },
+              {
+                "feature": "Idle Min",
+                "share": 0.04514766111969948
+              }
+            ]
+          },
+          "Infiltration": {
+            "shortcut_share": 0.0,
+            "top_features": [
+              {
+                "feature": "Idle Min",
+                "share": 0.13574592769145966
+              },
+              {
+                "feature": "Fwd Packet Length Max",
+                "share": 0.09101524204015732
+              },
+              {
+                "feature": "Init_Win_bytes_backward",
+                "share": 0.0701654702425003
+              },
+              {
+                "feature": "Fwd IAT Min",
+                "share": 0.05869924649596214
+              },
+              {
+                "feature": "Flow Bytes/s",
+                "share": 0.0508694164454937
+              }
+            ]
+          },
+          "PortScan": {
+            "shortcut_share": 0.0,
+            "top_features": [
+              {
+                "feature": "Packet Length Std",
+                "share": 0.17142342031002045
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.1095966100692749
+              },
+              {
+                "feature": "PSH Flag Count",
+                "share": 0.06986085325479507
+              },
+              {
+                "feature": "Bwd Packets/s",
+                "share": 0.06207769364118576
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.05514458939433098
+              }
+            ]
+          },
+          "WebAttack": {
+            "shortcut_share": 0.0,
+            "top_features": [
+              {
+                "feature": "Fwd IAT Min",
+                "share": 0.15798643231391907
+              },
+              {
+                "feature": "Init_Win_bytes_forward",
+                "share": 0.0879964753985405
+              },
+              {
+                "feature": "Fwd Header Length",
+                "share": 0.08726159483194351
+              },
+              {
+                "feature": "Bwd Packet Length Min",
+                "share": 0.08610004931688309
+              },
+              {
+                "feature": "Fwd IAT Max",
+                "share": 0.0544772706925869
+              }
+            ]
+          }
+        },
+        "global": [
+          {
+            "feature": "Bwd Packet Length Std",
+            "mean_abs_shap": 1.9076334238052368
+          },
+          {
+            "feature": "Bwd Packet Length Min",
+            "mean_abs_shap": 1.3125286102294922
+          },
+          {
+            "feature": "Init_Win_bytes_backward",
+            "mean_abs_shap": 1.3042194843292236
+          },
+          {
+            "feature": "Init_Win_bytes_forward",
+            "mean_abs_shap": 1.154700517654419
+          },
+          {
+            "feature": "Packet Length Std",
+            "mean_abs_shap": 0.8864818811416626
+          },
+          {
+            "feature": "Fwd Packet Length Max",
+            "mean_abs_shap": 0.5074889659881592
+          },
+          {
+            "feature": "Fwd Packet Length Std",
+            "mean_abs_shap": 0.35532498359680176
+          },
+          {
+            "feature": "Fwd IAT Min",
+            "mean_abs_shap": 0.33170250058174133
+          },
+          {
+            "feature": "min_seg_size_forward",
+            "mean_abs_shap": 0.32418596744537354
+          },
+          {
+            "feature": "Bwd Header Length",
+            "mean_abs_shap": 0.31619417667388916
+          },
+          {
+            "feature": "Fwd Header Length",
+            "mean_abs_shap": 0.3105436861515045
+          },
+          {
+            "feature": "PSH Flag Count",
+            "mean_abs_shap": 0.3098992705345154
+          },
+          {
+            "feature": "Bwd Packets/s",
+            "mean_abs_shap": 0.27907127141952515
+          },
+          {
+            "feature": "Packet Length Mean",
+            "mean_abs_shap": 0.2516327500343323
+          },
+          {
+            "feature": "Idle Min",
+            "mean_abs_shap": 0.22036266326904297
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+# "Operations wall" theme: deep navy surfaces, cyan for controls, steel for
+# benign traffic and warm hues reserved for attacks (see dashboard/common.py).
+
+[server]
+maxUploadSize = 1024        # MB; single CIC-IDS2017 day files are up to ~270 MB
+enableStaticServing = true  # serves dashboard/static/ (the self-hosted fonts)
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"     # hide the Deploy button and developer menu
+
+[theme]
+base = "dark"
+primaryColor = "#38C6E8"
+backgroundColor = "#0F1B2D"
+secondaryBackgroundColor = "#172840"
+textColor = "#E6EDF5"
+linkColor = "#38C6E8"
+borderColor = "#2A3D57"
+showWidgetBorder = true
+dataframeBorderColor = "#22344D"
+dataframeHeaderBackgroundColor = "#172840"
+redColor = "#E5484D"
+orangeColor = "#F08A4B"
+yellowColor = "#F2C14E"
+blueColor = "#38C6E8"
+greenColor = "#3FB59A"
+violetColor = "#A970FF"
+grayColor = "#93A4BC"
+# Cool neutrals only: warm hues are reserved for attack categories.
+chartCategoricalColors = ["#38C6E8", "#3FB59A", "#8A99AD", "#9FE3F5", "#2B7A9B", "#C3CFDD"]
+# Barlow takes after highway signage: built to be read from a distance, which
+# suits a wall display or a projector. The semi-condensed cut keeps numbers compact.
+font = "Barlow, sans-serif"
+headingFont = "'Barlow Semi Condensed', Barlow, sans-serif"
+baseFontSize = 16
+headingFontSizes = ["2.25rem", "1.5rem", "1.2rem", "1rem", "0.9rem", "0.8rem"]
+headingFontWeights = [700, 600, 600, 600, 600, 600]
+metricValueFontSize = "2rem"
+metricValueFontWeight = 600
+baseRadius = "6px"
+
+[theme.sidebar]
+backgroundColor = "#0B1626"
+secondaryBackgroundColor = "#14243A"
+borderColor = "#1E3048"
+
+[[theme.fontFaces]]
+family = "Barlow"
+url = "app/static/fonts/barlow-400.woff2"
+weight = 400
+
+[[theme.fontFaces]]
+family = "Barlow"
+url = "app/static/fonts/barlow-500.woff2"
+weight = 500
+
+[[theme.fontFaces]]
+family = "Barlow"
+url = "app/static/fonts/barlow-600.woff2"
+weight = 600
+
+[[theme.fontFaces]]
+family = "Barlow Semi Condensed"
+url = "app/static/fonts/barlow-semi-condensed-500.woff2"
+weight = 500
+
+[[theme.fontFaces]]
+family = "Barlow Semi Condensed"
+url = "app/static/fonts/barlow-semi-condensed-600.woff2"
+weight = 600
+
+[[theme.fontFaces]]
+family = "Barlow Semi Condensed"
+url = "app/static/fonts/barlow-semi-condensed-700.woff2"
+weight = 700
