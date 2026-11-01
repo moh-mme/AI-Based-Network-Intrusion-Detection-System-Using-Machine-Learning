@@ -86,22 +86,25 @@ _component = st.components.v2.component(
 .nids-map svg { width: 100%; height: auto; display: block; overflow: visible; }
 .nids-map path.arc { transition: stroke-dashoffset 1s ease-out, opacity 0.6s ease-in; }
 .nids-map .fading { opacity: 0; transition: opacity 0.6s ease-in; }
+.nids-map.fullscreen { position: fixed; inset: 0; z-index: 0; background: #0A0D12; }
+.nids-map.fullscreen svg { height: 100%; }
 """,
     isolate_styles=False,
 )
 
 
 def attack_map(tick: int, attacks: dict[str, int], key: str = "attack_map",
-               sequence: list[dict[str, int]] | None = None) -> None:
+               sequence: list[dict[str, int]] | None = None, fullscreen: bool = False) -> None:
     """Draw this tick's detections (attack type -> flow count) as arcs on the world map.
 
     With `sequence` (one {attack type: flows} per second) the map plays it on a loop
-    by itself instead of following `tick`.
+    by itself instead of following `tick`. `fullscreen` fills the window behind the page.
     """
     # Rebuilt whenever this generator is newer than its output.
     if not WORLD_MAP.exists() or WORLD_MAP.stat().st_mtime < Path(__file__).stat().st_mtime:
         build_world_map()
     data = attack_payload(tick, attacks)
+    data["fullscreen"] = fullscreen
     if sequence:
         data["sequence"] = [attack_payload(0, step)["events"] for step in sequence]
     _component(key=key, height="content", data=data)

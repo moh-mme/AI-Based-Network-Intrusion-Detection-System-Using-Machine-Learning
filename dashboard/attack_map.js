@@ -27,11 +27,27 @@ function pulse(parent, x, y, color) {
   node("animate", { attributeName: "opacity", from: 0.5, to: 0, dur: "1.5s", repeatCount: "indefinite" }, ring);
 }
 
+// Fullscreen: cover the window to the right of the sidebar, and publish that edge as
+// --map-left so page overlays can centre themselves over the map.
+function fillWindow(host) {
+  host.classList.add("fullscreen");
+  const fit = () => {
+    if (!host.isConnected) return clearInterval(timer);
+    const sidebar = document.querySelector('[data-testid="stSidebar"]');
+    const left = sidebar ? Math.max(0, sidebar.getBoundingClientRect().right) : 0;
+    host.style.left = `${left}px`;
+    document.documentElement.style.setProperty("--map-left", `${left}px`);
+  };
+  const timer = setInterval(fit, 300);  // follows the sidebar opening and closing
+  fit();
+}
+
 async function createMap(host, data) {
   const world = await (await fetch(WORLD)).json();
   const { width: W, height: H, lat_top: top, lat_bottom: bottom } = world;
   const project = ({ lat, lng }) => ({ x: (lng + 180) * (W / 360), y: (top - lat) * (H / (top - bottom)) });
 
+  if (data.fullscreen) fillWindow(host);
   const svg = node("svg", { viewBox: `0 0 ${W} ${H}`, role: "img",
     "aria-label": "World map with detected attacks drawn as arcs to the protected network" });
   const defs = node("defs", {}, svg);
