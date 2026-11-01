@@ -2,7 +2,6 @@ import numpy as np
 import streamlit as st
 
 import bento
-from attack_map import attack_map
 from common import (
     CATEGORY_COLORS,
     compact,
@@ -18,7 +17,6 @@ from nids.data import BENIGN, CATEGORY_COL
 from nids.research_report import headline
 
 WINDOW = 400  # flows per point of the replay chart
-FLOWS_PER_SECOND = 50  # replay speed of the hero map
 
 profile = get_profile()
 tasks = trained_tasks()
@@ -33,19 +31,6 @@ intro = (f"Six machine-learning models trained on {compact(profile['rows_final']
 bento.render('<p class="eyebrow">INTRUSION DETECTION</p>'
              f'<h1>AI-Based Network Intrusion Detection System</h1><p class="lead">{intro}</p>',
              key="overview_header")
-
-# --- Hero: world map replaying the held-out traffic's attack bursts -----------------
-if stream is not None:
-    flows = stream[CATEGORY_COL].astype(str).to_numpy()
-    seconds = [flows[i:i + FLOWS_PER_SECOND] for i in range(0, len(flows), FLOWS_PER_SECOND)]
-    sequence = [{c: int((s == c).sum()) for c in np.unique(s) if c != BENIGN} for s in seconds]
-    with st.container(border=True):
-        st.markdown("**Attacks reaching the protected network** "
-                    ":green-badge[:material/fiber_manual_record: Live replay]")
-        attack_map(0, {}, key="overview_map", sequence=sequence)
-        st.caption(f"Held-out test traffic replayed at {FLOWS_PER_SECOND} flows per second: each arc is a burst "
-                   "of attack flows, coloured by type, heading for the CIC-IDS2017 testbed in Fredericton, "
-                   "Canada. The dataset records no attacker locations, so arcs start from random countries.")
 
 html = ['<div class="grid">']
 

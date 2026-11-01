@@ -12,6 +12,7 @@ st.html(CSS)
 
 pages = [
     st.Page("views/overview.py", title="Overview", icon=":material/shield:", default=True),
+    st.Page("views/attack_map_page.py", title="Attack Map", icon=":material/public:"),
     st.Page("views/dataset.py", title="Dataset Explorer", icon=":material/dataset:"),
     st.Page("views/performance.py", title="Model Performance", icon=":material/monitoring:"),
     st.Page("views/research.py", title="Research Findings", icon=":material/science:"),
